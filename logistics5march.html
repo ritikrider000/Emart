@@ -11,49 +11,33 @@
   </style>
 </head>
 <body>
-  
   <div class="top-nav py-2 bg-primary">
-
     <div class="container-xl d-flex align-items-center">
-
-        <div class="d-none d-xl-flex text-white fs-12 px-2">
-
-            <div class="d-flex">
-
-               <span class="d-flex align-items-center me-3">24x7 Helpline number </span>
-
-                <span class="d-flex align-items-center me-3"><i class="bi bi-telephone-fill me-1"></i>  +<a href="tel:9354065647" style="color:#595b54">9354065647</a> </span>
-
-                <span class="d-flex align-items-center me-3"><i class="bi bi-envelope-fill me-1"></i> EMARTRG@GMAIL.com</span>
-
-          
-              </div>
-
-
-
+      <div class="d-none d-xl-flex text-white fs-12 px-2">
+        <div class="d-flex">
+          <span class="d-flex align-items-center me-3">24x7 Helpline number </span>
+          <span class="d-flex align-items-center me-3">
+            <i class="bi bi-telephone-fill me-1"></i>  
+            +<a href="tel:9354065647" style="color:#595b54">9354065647</a> 
+          </span>
+          <span class="d-flex align-items-center me-3">
+            <i class="bi bi-envelope-fill me-1"></i> EMARTRG@GMAIL.com
+          </span>
         </div>
-
-        <div class="flex-fill px-3 overflow-hidden">
-
-            <marquee class="text-secondary d-flex align-items-center fs-25" behavior="" direction="">
-
-                <span class="d-inline-block" style="color: #12153f;">EMART RG Logistics and Cargo Services📦          Best Services📦available here     24x7 tracking service avail     Free pickup within 24hrs </span>
-
-            </marquee> 
-
-        </div>
-
-        <div class=" fs-12 ms-auto text-white d-flex align-items-center">
-
-            
-
-        </div>
-
+      </div>
+      <div class="flex-fill px-3 overflow-hidden">
+        <marquee class="text-secondary d-flex align-items-center fs-25">
+          <span class="d-inline-block" style="color: #12153f;">
+            EMART RG Logistics and Cargo Services📦 Best Services📦available here 24x7 tracking service avail Free pickup within 24hrs
+          </span>
+        </marquee> 
+      </div>
+      <div class=" fs-12 ms-auto text-white d-flex align-items-center">
+      </div>
     </div>
-
-</div>
+  </div>
   <header>
-    <img src="logo.png" alt="EMART RG Logo" class="logo">
+    <img src="C:\Users\ritik\OneDrive\Desktop\logo.png" alt="EMART RG Logo" class="logo">
     <h1>Welcome to EMART RG Logistics and Cargo Services</h1>
     <nav>
       <ul>
@@ -66,16 +50,13 @@
   <main>
     <div class="container">
       <video autoplay loop muted plays-inline class="background-clip">
-        <source src="C:\Users\ritik\Downloads\background.mp4 - Made with Clipchamp.mp4" type="video/mp4">
-        
+        <source src="C:\Users\ritik\OneDrive\Desktop\background.mp4 - Made with Clipchamp.mp4" type="video/mp4">
       </video>
     </div>
     <section id="home">
-      
       <h2>Home📦</h2>
-      
       <ul>
-      <li><a href="https://www.dtdc.in/">Visit page</a></li>
+        <li><a href="https://www.dtdc.in/">Visit page</a></li>
       </ul>
       <p>Welcome to EMART RG Logistics and Cargo Services, your trusted partner for all your logistics and cargo needs.</p>
     </section>
@@ -84,15 +65,34 @@
       <ul>
         <li><a href="https://ship.nimbuspost.com/shipping/tracking/D99942382">HOW TO TRACK </a></li>
         <li><a href="https://bluedart.com/tracking">TRACKING ID</a></li>
-        
-      
-     
+      </ul>
       <p>We offer a range of logistics and cargo services including transportation, warehousing, and supply chain management.</p>
     </section>
+    <section id="calculator">
+      <h2>Price Calculator 📦</h2>
+      <form id="priceForm" onsubmit="event.preventDefault(); calculatePrice();">
+        <label for="pickup">Pickup Pincode:</label>
+        <input type="text" id="pickup" name="pickup" required><br><br>
+
+        <label for="destination">Destination Pincode:</label>
+        <input type="text" id="destination" name="destination" required><br><br>
+
+        <label for="length">Length (cm):</label>
+        <input type="number" id="length" name="length" required><br><br>
+
+        <label for="breadth">Breadth (cm):</label>
+        <input type="number" id="breadth" name="breadth" required><br><br>
+
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" name="height" required><br><br>
+
+        <button type="submit">Calculate Price</button>
+      </form>
+      <h3 id="result"></h3>
+    </section>
     <section id="contact">
-<section id="contact">
       <h2>Contact</h2>
-      <form action="contact.php" method="post">
+      <form action="emart.php" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
         <label for="email">Email:</label>
@@ -103,14 +103,34 @@
         <textarea id="message" name="message" required></textarea>
         <button type="submit">Submit</button>
       </form>
-      <h2>Contact</h2>
-      <p>contact Any time 
-        24x7 9354065647</p>
+      <p>Contact any time 24x7 9354065647</p>
       <p>Get in touch with us at EMART RG Logistics and Cargo Services for reliable and efficient service.</p>
     </section>
   </main>
   <footer>
     <p>&copy; 2024 EMART RG Logistics and Cargo Services</p>
   </footer>
+  <script>
+    function calculatePrice() {
+      const length = parseFloat(document.getElementById('length').value);
+      const breadth = parseFloat(document.getElementById('breadth').value);
+      const height = parseFloat(document.getElementById('height').value);
+
+      if (isNaN(length) || isNaN(breadth) || isNaN(height)) {
+        alert("Please enter valid dimensions.");
+        return;
+      }
+
+      const volume = length * breadth * height; // in cm³
+      const rate = 0.05; // Example rate per cm³
+      const price = volume * rate;
+
+      document.getElementById('result').innerText = `Estimated Price: ₹${price.toFixed(2)}`;
+    }
+  </script>
+  <script src="js/script.js"></script>
+  
+
+
 </body>
 </html>
